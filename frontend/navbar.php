@@ -31,11 +31,17 @@ $user = unserialize($_SESSION['user']);
 
         <!-- Nav Links -->
         <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
+
             <a href="http://localhost/hireup/frontend/recruiter/home.php"
                 class="text-gray-400 hover:border-b-2 pb-2 hover:border-black hover:text-black">Home</a>
-            <a href="http://localhost/hireup/frontend/seeker/findJob.php"
-                class="text-gray-400 hover:border-b-2 pb-2 hover:border-black hover:text-black">Find
-                Job</a>
+            <?php
+            if ($user->role == User::SEEKER) {
+                ?>
+                <a href="http://localhost/hireup/frontend/seeker/findJob.php"
+                    class="text-gray-400 hover:border-b-2 pb-2 hover:border-black hover:text-black">Find
+                    Job</a>
+            <?php } ?>
+
 
             <a href="<?php echo
                 $user->role == User::RECRUITER ? 'http://localhost/hireup/frontend/recruiter/profile.php' : 'http://localhost/hireup/frontend/seeker/profile.php' ?>"

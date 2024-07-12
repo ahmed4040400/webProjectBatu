@@ -3,6 +3,9 @@ session_start();
 require_once ('../../entities/user.php');
 $user = unserialize($_SESSION['user']);
 
+if ($user->role == 'recruiter') {
+    header("Location:../recruiter/home.php");
+}
 $jobs = $user->getAllJobPosts();
 
 ?>
@@ -42,15 +45,19 @@ $jobs = $user->getAllJobPosts();
 
         <?php
 
-        if (!empty($_GET['msg'] && $_GET['msg'] == 'sent')) {
-            ?>
-            <div class="p-4 mt-32 mb-4 text-sm text-green-800  bg-green-50 dark:bg-gray-800 dark:text-green-400"
-                role="alert">
-                <span class="font-medium">woohooo</span> your application has been sent
-            </div>
+        if (isset($_GET['msg'])) {
 
-            <?php
+            if (!empty($_GET['msg'] && $_GET['msg'] == 'sent')) {
+                ?>
+                <div class="p-4 mt-32 mb-4 text-sm text-green-800  bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                    role="alert">
+                    <span class="font-medium">woohooo</span> your application has been sent
+                </div>
+
+                <?php
+            }
         }
+
         ?>
 
         <div class="  flex flex-co w-full     md:flex-row sm:max-w-full container mx-auto mt-32 px-8">

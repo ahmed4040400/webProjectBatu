@@ -21,7 +21,7 @@ if (empty($title) || empty($content) || empty($location)) {
 
 } else {
     $user->postAJob($title, $content, $location);
-    header("Location:profile.php");
+    header("Location:profile.php?msg=sent");
 }
 
 

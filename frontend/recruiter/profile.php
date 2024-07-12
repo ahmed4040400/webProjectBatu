@@ -18,6 +18,7 @@ $appliedApplications = $user->getAppliedApplications();
 
     <?php require_once ('../navbar.php') ?>
 
+
     <?php
     if (!empty($_GET['msg'] && $_GET['msg'] == 'fields_required')) {
         ?>
@@ -25,6 +26,23 @@ $appliedApplications = $user->getAppliedApplications();
             fields to add jop is required </div>
         <?php
     }
+    ?>
+
+
+    <?php
+
+    if (isset($_GET['msg'])) {
+
+        if (!empty($_GET['msg'] && $_GET['msg'] == 'sent')) {
+            ?>
+            <div class="p-4 mt-32 mb-4 text-sm text-green-800  bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <span class="font-medium">woohooo</span> your post has been sent
+            </div>
+
+            <?php
+        }
+    }
+
     ?>
 
     <section class="relative pt-40 pb-24">
